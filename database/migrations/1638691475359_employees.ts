@@ -8,8 +8,8 @@ export default class Employees extends BaseSchema {
       table.increments('employeeID').primary()
       table.string('username',255).notNullable().unique()
       table.string('password',100).notNullable()
-      table.string('firstName',255)
-      table.string('lastName',255)
+      table.string('firstName',255).notNullable()
+      table.string('lastName',255).notNullable()
       table.string('telNo')
       table.string('email')
       /**
