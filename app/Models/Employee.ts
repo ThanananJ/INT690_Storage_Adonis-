@@ -8,7 +8,7 @@ export default class Employee extends BaseModel {
   @column()
   public username: string
 
-  @column()
+  @column({ serializeAs: null })
   public password: string
 
   @column()
