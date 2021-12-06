@@ -1,0 +1,34 @@
+@layout('layouts/master')
+
+@set('title','Home')
+
+@section('body') 
+    <div style="text-align:right">
+        <a class="ui button" href="#">New</a>
+    </div>
+    <div class="ui cards">
+        <div class="card">
+          <div class="content">
+            <div class="header">
+              Store Name
+            </div>
+            <div class="meta">
+              Product Count
+            </div>
+            <div class="description">
+              Owner
+            </div>
+          </div>
+          <div class="extra content">
+            <div class="ui two buttons">
+              <div class="ui basic green button">Edit Store</div>
+              <div class="ui basic red button">Delete Store</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    @each(post in posts) 
+    <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+    @endeach
+    </ul>
+@endsection
