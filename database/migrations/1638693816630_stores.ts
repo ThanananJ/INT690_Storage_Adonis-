@@ -6,11 +6,11 @@ export default class Stores extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('storeID').primary()
-      table.integer('productCount').notNullable()
-      table.string('storeName',255).notNullable()
-      table.string('ownerName',255)
-      table.string('ownerLastName',255)
-      table.string('telNo')
+      table.integer('product_count').notNullable()
+      table.string('store_name',255).notNullable()
+      table.string('owner_name',255)
+      table.string('owner_last_name',255)
+      table.string('tel_no')
       table.string('address')
       table.integer('employee_id').unsigned().notNullable().references('employeeID').inTable('employees').onDelete('CASCADE')
 

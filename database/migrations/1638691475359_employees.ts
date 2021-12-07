@@ -8,9 +8,9 @@ export default class Employees extends BaseSchema {
       table.increments('employeeID').primary()
       table.string('username',255).notNullable().unique()
       table.string('password',100).notNullable()
-      table.string('firstName',255).notNullable()
-      table.string('lastName',255).notNullable()
-      table.string('telNo')
+      table.string('first_name',255).notNullable()
+      table.string('last_name',255).notNullable()
+      table.string('tel_no')
       table.string('email')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
