@@ -1,7 +1,15 @@
-import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import Store from "App/Models/Store";
 
 export default class StoresController {
-  public async index({}: HttpContextContract) {}
+  public async index({ auth, view }: HttpContextContract) {
+    const store = await Store.query().where(
+      "employeeId",
+      auth.user!.employeeID
+    );
+
+    return view.render("index", { store: store });
+  }
 
   public async create({}: HttpContextContract) {}
 
