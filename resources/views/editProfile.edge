@@ -1,0 +1,46 @@
+@layout('layouts/master')
+
+@set('title','Home')
+
+@section('body') 
+<div style="text-align: center" class=" ">
+    <h1 class="ui header">Profile</h1>
+    <form class="ui large form" action="" method="post"  >    
+        <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+                <label>Username:</label>
+                <input type="text" placeholder="UserName">
+            </div>
+            <div class="six wide field">
+                <label>Password: </label>
+                <input type="text" placeholder="Password">
+            </div>
+        </div>
+        <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+                <label>Name:</label>
+                <input type="text" placeholder="UserName">
+            </div>  
+            <div class="six wide field">
+                <label>Surname: </label>
+                <input type="text" placeholder="Password">
+            </div>
+        </div>
+        <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+                <label>Email:</label>
+                <input type="text" placeholder="UserName">
+            </div>  
+            <div class="six wide field">
+                <label>TelNo: </label>
+                <input type="text" placeholder="Password">
+            </div>
+        </div>
+        <input class="ui button" type="button" value="Back">
+        <input class="ui button" type="submit" value="Update">
+    </form>
+</div>
+@endsection

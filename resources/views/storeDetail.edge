@@ -1,0 +1,95 @@
+@layout('layouts/master')
+
+@set('title','Login')
+
+@section('body')
+<div style="text-align: center" class=" ">
+
+    <h1 class="ui header">Store</h1>
+
+    <form class="ui large form" action="" method="post"  > 
+        <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+              <input type="text"  value="StoreName">
+            </div>  
+            <div class="six wide field"></div>   
+             <div class="two wide field">
+                <label style="text-align: left">ProductCount: 10</label>
+             </div>  
+        </div>
+        <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+              <label>Owner:</label>
+              <input type="text" value="Name">
+              &nbsp;
+              <input type="text" value="Surname">
+            </div> 
+            <div class="six wide field">
+                <input type="text" value="TelNo">
+            </div>        
+        </div>
+       
+        <div class="inline fields ">
+          <div class="five wide field"></div>
+          <div class="six wide field">
+            <label>Address:</label>
+            <textarea></textarea>
+          </div>     
+      </div>
+        <input class="ui button" type="button" value="Back">
+        <input class="ui button" type="submit" value="Update Store">
+    </form>
+    <hr>
+    <h1 class="ui header">Lists Product</h1>
+    <table class="ui very basic large table " style="text-align: center;">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Product Name</th>
+          <th>Quatity</th>
+          <th>Price</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>ไก่หมัก</td>
+          <td>9</td>
+          <td>80.00 บาท</td>
+          <td><a class="ui small button">Delete Store</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>เก้าอี้</td>
+          <td>20</td>
+          <td>200.00 บาท</td>
+          <td><a class="ui small button">Delete Store</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>ปากกา</td>
+          <td>200</td>
+          <td>5.00 บาท</td>
+          <td><a class="ui small button">Delete Store</a></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tfoot class="full-width">
+        <tr>
+          <th></th>
+          <th colspan="4">
+            <div class="ui right floated small button">
+               Add Product
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+</div>
+@endsection

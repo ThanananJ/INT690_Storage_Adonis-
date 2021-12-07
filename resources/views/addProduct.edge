@@ -1,0 +1,36 @@
+@layout('layouts/master')
+
+@set('title','Login')
+
+@section('body')
+<div style="text-align: center" class=" ">
+
+    <h1 class="ui header">Add Product</h1>
+
+    <form class="ui large form" action="" method="post"  > 
+        <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <label>ProductName:</label>
+              <input type="text" placeholder="UserName">
+            </div>    
+        </div>
+        <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <label>Quantity:</label>
+              <input type="text" placeholder="UserName">
+            </div>     
+        </div>
+        <div class="inline fields ">
+          <div class="five wide field"></div>
+          <div class="six wide field">
+            <label>Price:</label>
+            <input type="text" placeholder="UserName">
+          </div>     
+      </div>
+        <input class="ui button" type="button" value="Back">
+        <input class="ui button" type="submit" value="Add">
+    </form>
+</div>
+@endsection
