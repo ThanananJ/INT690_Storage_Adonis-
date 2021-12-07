@@ -18,8 +18,18 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from "@ioc:Adonis/Core/Route";
 
-Route.get('/', async ({ view }) => {
-  return view.render('index')
-})
+Route.group(() => {
+  Route.get("/", async ({ view }) => {
+    return view.render("register");
+  });
+}).middleware("auth");
+
+Route.on("/login").render("login").as("login");
+Route.on("/register").render("register").as("register");
+Route.post("/users/login", "EmployeesController.login").as("employee.login");
+Route.post("/users/register", "EmployeesController.register").as(
+  "employee.register"
+);
+Route.get("/logout", "EmployeesController.logout").as("employee.logout");
