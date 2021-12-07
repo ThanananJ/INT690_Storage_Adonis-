@@ -6,25 +6,34 @@
 <div style="text-align: center" class=" ">
 
     <h1 class="ui header">Login</h1>
-
+    @if(flashMessages.has('error'))
+      <div class="ui negative message">{{ flashMessages.get('error')}}</div>
+    @endif
     <form class="ui large form" action="" method="post"  > 
+      {{ csrfField() }}
         <div class="inline fields ">
             <div class="five wide field"></div>
             <div class="six wide field">
               <label>Username:</label>
-              <input type="text" placeholder="UserName">
+              <input type="text" placeholder="UserName" name="username">
+              @if(flashMessages.has('errors.username'))
+                <div class="ui negative message">{{ flashMessages.get('errors.username')}}</div>
+              @endif
             </div>    
         </div>
         <div class="inline fields ">
             <div class="five wide field"></div>
             <div class="six wide field">
               <label>Password: </label>
-              <input type="password" placeholder="Password">
+              <input type="password" placeholder="Password" name="password">
+              @if(flashMessages.has('errors,password'))
+                <div class="ui negative message">{{ flashMessages.get('errors.password')}}</div>
+              @endif
             </div>    
         </div>
         <input class="ui button" type="submit" value="Submit">
     </form>
     <hr style="width:30%">
-    <a href="#">Register</a>
+    <a href="{{route('register')}}">Register</a>
 </div>
 @endsection
