@@ -2,7 +2,7 @@ import { schema, rules } from "@ioc:Adonis/Core/Validator";
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 
 export default class RegisterValidator {
-  constructor(protected ctx: HttpContextContract) {}
+  constructor(protected ctx: HttpContextContract) { }
 
   /*
    * Define schema to validate the "shape", "type", "formatting" and "integrity" of data.
@@ -25,14 +25,14 @@ export default class RegisterValidator {
    */
   public schema = schema.create({
     username: schema.string({}, [
-      rules.minLength(6),
+      rules.minLength(4),
       rules.unique({ table: "employees", column: "username" }),
     ]),
     password: schema.string({}, [rules.minLength(6)]),
     firstName: schema.string(),
     lastName: schema.string(),
-    email: schema.string(),
-    telNo: schema.string(),
+    email: schema.string({}, [rules.email()]),
+    telNo: schema.string({}, [rules.mobile({ locales: ["th-TH"] }), rules.minLength(9), rules.maxLength(10)]),
   });
 
   /**
@@ -50,6 +50,10 @@ export default class RegisterValidator {
     required: "The {{ field }} is required!",
     minLength:
       "The {{ field }} must have at least {{ options.minLength }} length!",
+    maxLength:
+      "The {{ field }} must have {{ options.maxLength }} length!",
     "username.unique": "The username is already used!",
+    "email.email": "Email is invalid!",
+    "telNo.mobile": "Telephone Number is invalid!"
   };
 }
