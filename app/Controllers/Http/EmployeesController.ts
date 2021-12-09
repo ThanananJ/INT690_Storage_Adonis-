@@ -12,10 +12,16 @@ export default class EmployeesController {
     const username = request.input("username");
     const password = request.input("password");
 
+    console.log(username);
+    console.log(password);
+
     try {
+      console.log("---");
       await auth.attempt(username, password);
+      console.log("login");
       response.redirect().toRoute("index");
     } catch (error) {
+      console.log(error);
       session.flash("error", "The user is not authorized!");
       response.redirect().toRoute("login");
     }
@@ -36,7 +42,6 @@ export default class EmployeesController {
       email: payload.email,
       telNo: payload.telNo,
     });
-
 
     session.flash(
       "message",

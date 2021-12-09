@@ -5,7 +5,7 @@
  * file.
  */
 
-import { AuthConfig } from '@ioc:Adonis/Addons/Auth'
+import { AuthConfig } from "@ioc:Adonis/Addons/Auth";
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,7 @@ import { AuthConfig } from '@ioc:Adonis/Addons/Auth'
 |
 */
 const authConfig: AuthConfig = {
-  guard: 'web',
+  guard: "web",
   guards: {
     /*
     |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ const authConfig: AuthConfig = {
     |
     */
     web: {
-      driver: 'session',
+      driver: "session",
 
       provider: {
         /*
@@ -41,7 +41,7 @@ const authConfig: AuthConfig = {
         | Name of the driver
         |
         */
-        driver: 'lucid',
+        driver: "lucid",
 
         /*
         |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ const authConfig: AuthConfig = {
         | the primary key is the right choice.
         |
         */
-        identifierKey: 'employeeID',
+        identifierKey: "employeeId",
 
         /*
         |--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ const authConfig: AuthConfig = {
         | of the mentioned columns to find their user record.
         |
         */
-        uids: ['username'],
+        uids: ["username"],
 
         /*
         |--------------------------------------------------------------------------
@@ -77,10 +77,10 @@ const authConfig: AuthConfig = {
         | that time.
         |
         */
-        model: () => import('App/Models/Employee'),
+        model: () => import("App/Models/Employee"),
       },
     },
   },
-}
+};
 
-export default authConfig
+export default authConfig;

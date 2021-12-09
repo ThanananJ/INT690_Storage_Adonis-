@@ -9,7 +9,7 @@
     @if(flashMessages.has('error'))
       <div class="ui negative message">{{ flashMessages.get('error')}}</div>
     @endif
-    <form class="ui large form" action="" method="post"  > 
+    <form class="ui large form" action="{{route("employee.login")}}" method="post"  > 
       {{ csrfField() }}
         <div class="inline fields ">
             <div class="five wide field"></div>
