@@ -4,7 +4,7 @@ import Product from './Product'
 
 export default class Store extends BaseModel {
   @column({ isPrimary: true })
-  public storeID: number
+  public storeId: number
 
   @column()
   public productCount: number
