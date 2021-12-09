@@ -24,6 +24,9 @@ Route.group(() => {
   Route.get("/", async ({ view }) => {
     return view.render("register");
   });
+  Route.get("/index", "StoresController.index").as("index");
+  Route.get("/profile", "EmployeesController.show").as("profile")
+  Route.post("/profile/add", "EmployeesController.edit").as("profile.add")
 }).middleware("auth");
 
 Route.on("/login").render("login").as("login");
