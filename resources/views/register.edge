@@ -13,11 +13,11 @@
             <div class="two wide field"></div>
             <div class="six wide field">
               <label>Username:</label>
-              <input type="text" placeholder="UserName" name="username" value="{{ flashMessages.get('username','')}}">
+              <input type="text" placeholder="UserName" name="username" >
             </div>
             <div class="six wide field">
               <label>Password: </label>
-              <input type="password" placeholder="Password" name="password" value="{{ flashMessages.get('password','')}}">  
+              <input type="password" placeholder="Password" name="password" >  
             </div>
           </div>
           @if(flashMessages.has('errors.username')||flashMessages.has('errors.password'))
@@ -39,11 +39,11 @@
             <div class="two wide field"></div>
             <div class="six wide field">
               <label>Name:</label>
-              <input type="text" placeholder="Name" name="firstName" value="{{ flashMessages.get('firstName','')}}" >
+              <input type="text" placeholder="Name" name="firstName"  >
             </div>
             <div class="six wide field">
               <label>Surname: </label>
-              <input type="text" placeholder="Surname" name="lastName" value="{{ flashMessages.get('lastName','')}}"> 
+              <input type="text" placeholder="Surname" name="lastName" > 
             </div>
           </div>
           @if(flashMessages.has('errors.firstName')||flashMessages.has('errors.lastName'))
@@ -65,11 +65,11 @@
             <div class="two wide field"></div>
             <div class="six wide field">
               <label>Email:</label>
-              <input type="text" placeholder="Email" name="email" value="{{ flashMessages.get('email','')}}">
+              <input type="text" placeholder="Email" name="email" >
             </div>
             <div class="six wide field">
               <label>TelNo: </label>
-              <input type="text" placeholder="TelNo" name="telNo" value="{{ flashMessages.get('telNo','')}}">
+              <input type="text" placeholder="Telephome Number" name="telNo" >
             </div>
           </div>
           @if(flashMessages.has('errors.firstName')||flashMessages.has('errors.lastName'))
@@ -87,6 +87,7 @@
               </div>
             </div>
           @endif
+          <a href="{{route('login')}}"><button class="ui button" type="button">Back</button></a>
         <input class="ui button" type="submit" value="Register">
     </form>
     
