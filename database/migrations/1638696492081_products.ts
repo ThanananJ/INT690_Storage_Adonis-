@@ -9,7 +9,7 @@ export default class Products extends BaseSchema {
       table.string('product_name')
       table.integer('quantity')
       table.double('price')
-      table.integer('storeid').unsigned().notNullable().references('store_id').inTable('stores').onDelete('CASCADE')
+      table.integer('store_store_id').unsigned().notNullable().references('store_id').inTable('stores').onDelete('CASCADE')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

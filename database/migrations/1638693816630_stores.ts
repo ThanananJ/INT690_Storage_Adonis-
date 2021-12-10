@@ -6,13 +6,12 @@ export default class Stores extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments("store_id").primary();
-      table.integer("product_count").notNullable();
       table.string("store_name", 255).notNullable();
       table.string("owner_name", 255);
       table.string("owner_last_name", 255);
       table.string("tel_no");
       table.string("address");
-      table.integer("employeeid").unsigned().notNullable().references("employee_id").inTable("employees").onDelete("CASCADE");
+      table.integer("employee_employee_id").unsigned().notNullable().references("employee_id").inTable("employees").onDelete("CASCADE");
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
