@@ -66,7 +66,7 @@ export default class EmployeesController {
     return view.render('editProfile', { employee: employee })
   }
 
-  public async edit({ response, auth, request }: HttpContextContract) {
+  public async edit({ response, auth, request, session }: HttpContextContract) {
 
     const payload = await request.validate(ProfileValidator);
 
@@ -80,6 +80,11 @@ export default class EmployeesController {
     employee!.telNo = payload.telNo
 
     await employee?.save()
+
+    session.flash(
+      "message",
+      "Update Profile successfuly."
+    );
 
     response.redirect().toRoute('profile')
 
