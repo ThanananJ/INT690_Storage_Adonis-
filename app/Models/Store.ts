@@ -25,7 +25,7 @@ export default class Store extends BaseModel {
   public address: string
 
   @column()
-  public employeeid: number
+  public employeeEmployeeId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -33,6 +33,6 @@ export default class Store extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @hasMany(()=>Product)
+  @hasMany(() => Product)
   public products: HasMany<typeof Product>
 }

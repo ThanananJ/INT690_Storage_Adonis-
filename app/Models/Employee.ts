@@ -45,5 +45,5 @@ export default class Employee extends BaseModel {
   }
 
   @hasMany(() => Store)
-  public store: HasMany<typeof Store>;
+  public stores: HasMany<typeof Store>;
 }
