@@ -36,6 +36,9 @@ Route.group(() => {
   Route.get("/store/:storeID", "StoresController.show").as("store.show")
   Route.post("/store/:storeID/edit", "StoresController.edit").as("store.edit")
 
+  Route.get("/store/:storeID/addproduct", "ProductsController.create").as("product.add")
+  Route.post("/store/:storeID/addproduct", "ProductsController.store").as("product.store")
+
 }).middleware("auth");
 
 Route.on("/login").render("login").as("login");
