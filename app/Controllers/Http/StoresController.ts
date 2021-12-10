@@ -20,7 +20,6 @@ export default class StoresController {
       query.as('storesCount')
     }).firstOrFail();
 
-    console.log(employee)
     return view.render("index", { stores: stores, employee: employee });
   }
 
@@ -56,9 +55,7 @@ export default class StoresController {
       }).firstOrFail()
 
     const products = await Product.query().where('store_store_id', storeID)
-    console.log("start")
-    console.log(products)
-    console.log("end")
+
 
     return view.render("storeDetail", { store: store,products:products });
   }

@@ -33,5 +33,13 @@ export default class ProductsController {
 
   public async update({ }: HttpContextContract) { }
 
-  public async destroy({ }: HttpContextContract) { }
+  public async destroy({ params, response }: HttpContextContract) {
+    const storeID = params.storeID
+    const productID = params.productID
+
+    const product = await Product.query().where('store_store_id', storeID).where('product_id', productID).firstOrFail()
+
+    await product?.delete()
+    response.redirect().toRoute('store.show', { storeID: storeID })
+  }
 }
