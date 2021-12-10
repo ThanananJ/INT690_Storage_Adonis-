@@ -7,27 +7,36 @@
 
     <h1 class="ui header">Store</h1>
 
-    <form class="ui large form" action="" method="post"  > 
+    <form class="ui large form" action="{{route('store.edit',{storeID: store.storeId})}}" method="post"  > 
+      {{ csrfField() }} 
+      <div class="inline fields ">
+        <div class="seven wide field"></div>
+        <div class="four wide field">
+        @if(flashMessages.has('message'))
+          <div class="ui positive message">{{ flashMessages.get('message')}}</div>
+        @endif
+      </div>
+      </div>
         <div class="inline fields ">
             <div class="two wide field"></div>
             <div class="six wide field">
-              <input type="text"  value="StoreName">
+              <input type="text" name="storeName" value="{{store.storeName}}">
             </div>  
             <div class="six wide field"></div>   
              <div class="two wide field">
-                <label style="text-align: left">ProductCount: 10</label>
+                <label style="text-align: left">ProductCount: {{store.$extras.productsCount}}</label>
              </div>  
         </div>
         <div class="inline fields ">
             <div class="two wide field"></div>
             <div class="six wide field">
               <label>Owner:</label>
-              <input type="text" value="Name">
+              <input type="text" name="ownerName" value="{{store.ownerName}}">
               &nbsp;
-              <input type="text" value="Surname">
+              <input type="text" name="ownerLastName" value="{{store.ownerLastName}}">
             </div> 
             <div class="six wide field">
-                <input type="text" value="TelNo">
+                <input type="text" name="telNo" value="{{store.telNo}}">
             </div>        
         </div>
        
@@ -35,10 +44,10 @@
           <div class="five wide field"></div>
           <div class="six wide field">
             <label>Address:</label>
-            <textarea></textarea>
+            <textarea name="address">{{store.address}}</textarea>
           </div>     
       </div>
-        <input class="ui button" type="button" value="Back">
+        <a class="ui button" href="{{route('index')}}">Back</a>
         <input class="ui button" type="submit" value="Update Store">
     </form>
     <hr>
