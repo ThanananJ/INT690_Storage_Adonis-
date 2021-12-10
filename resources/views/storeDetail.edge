@@ -12,7 +12,7 @@
       <div class="inline fields ">
         <div class="seven wide field"></div>
         <div class="four wide field">
-        @if(flashMessages.has('message'))
+        @if(flashMessages.has('messageStore'))
           <div class="ui positive message">{{ flashMessages.get('message')}}</div>
         @endif
       </div>
@@ -64,38 +64,26 @@
         </tr>
       </thead>
       <tbody>
+        @each(product in products)
         <tr>
           <td></td>
-          <td>ไก่หมัก</td>
-          <td>9</td>
-          <td>80.00 บาท</td>
-          <td><a class="ui small button">Delete Store</a></td>
-          <td></td>
+          <td>{{product.productName}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.price}} บาท</td>
+          <td><a class="ui small button">Edit Product</a></td>
+          <td><a class="ui small button">Delete Product</a></td>
         </tr>
-        <tr>
-          <td></td>
-          <td>เก้าอี้</td>
-          <td>20</td>
-          <td>200.00 บาท</td>
-          <td><a class="ui small button">Delete Store</a></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>ปากกา</td>
-          <td>200</td>
-          <td>5.00 บาท</td>
-          <td><a class="ui small button">Delete Store</a></td>
-          <td></td>
-        </tr>
+        @endeach
       </tbody>
       <tfoot class="full-width">
         <tr>
           <th></th>
-          <th colspan="4">
-            <div class="ui right floated small button">
-               Add Product
-            </div>
+          <th colspan="6">
+            <a href="{{route('product.add',{storeID: store.storeId})}}">
+              <div class="ui right floated small button">
+                New Product
+              </div>
+            </a>
           </th>
         </tr>
       </tfoot>

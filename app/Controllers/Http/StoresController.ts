@@ -1,3 +1,4 @@
+import Product from 'App/Models/Product';
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import Employee from "App/Models/Employee";
 import Store from "App/Models/Store";
@@ -5,6 +6,7 @@ import AddStoreValidator from "App/Validators/AddStoreValidator";
 
 export default class StoresController {
   public async index({ auth, view }: HttpContextContract) {
+
     const stores = await Store.query().where(
       "employeeEmployeeId",
       auth.user!.employeeId
@@ -17,13 +19,12 @@ export default class StoresController {
     ).withCount('stores', (query) => {
       query.as('storesCount')
     }).firstOrFail();
-    // const store = await Store.all()
+
     console.log(employee)
     return view.render("index", { stores: stores, employee: employee });
   }
 
   public async create({ view }: HttpContextContract) {
-
 
     return view.render('addStore')
   }
@@ -54,9 +55,12 @@ export default class StoresController {
         query.as('productsCount')
       }).firstOrFail()
 
-    console.log(store)
+    const products = await Product.query().where('store_store_id', storeID)
+    console.log("start")
+    console.log(products)
+    console.log("end")
 
-    return view.render("storeDetail", { store: store });
+    return view.render("storeDetail", { store: store,products:products });
   }
 
   public async edit({ response, auth, request, session, params }: HttpContextContract) {
@@ -77,8 +81,8 @@ export default class StoresController {
     await store?.save()
 
     session.flash(
-      "message",
-      "Update Profile successfuly."
+      "messageStore",
+      "Update Store successfuly."
     );
     response.redirect().toRoute('store.show', { storeID: storeID })
   }
