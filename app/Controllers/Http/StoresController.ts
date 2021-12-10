@@ -10,7 +10,7 @@ export default class StoresController {
       auth.user!.employeeId
     );
     // const store = await Store.all()
-    console.log(stores)
+    // console.log(stores)
     return view.render("index", { stores: stores });
   }
 
@@ -45,5 +45,14 @@ export default class StoresController {
 
   public async update({ }: HttpContextContract) { }
 
-  public async destroy({ }: HttpContextContract) { }
+  public async destroy({ auth, params, response }: HttpContextContract) {
+
+    const storeID = params.storeID
+
+    const store = await Store.query().where("employeeid",
+      auth.user!.employeeId).where('storeId', storeID).firstOrFail()
+
+    await store?.delete()
+    response.redirect().toRoute("index")
+  }
 }
