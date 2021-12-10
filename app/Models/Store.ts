@@ -25,7 +25,7 @@ export default class Store extends BaseModel {
   public address: string
 
   @column()
-  public employeeId: number
+  public employeeid: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
