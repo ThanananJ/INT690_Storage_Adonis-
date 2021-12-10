@@ -28,7 +28,6 @@ export default class AddStoreValidator {
     ownerName: schema.string(),
     ownerLastName: schema.string(),
     telNo: schema.string({}, [rules.mobile(), rules.minLength(9), rules.maxLength(10)]),
-    productCount: schema.number(),
     address: schema.string()
 
   })
