@@ -38,6 +38,7 @@ Route.group(() => {
 
   Route.get("/store/:storeID/addproduct", "ProductsController.create").as("product.add")
   Route.post("/store/:storeID/addproduct", "ProductsController.store").as("product.store")
+  Route.get("/store/:storeID/deleteproduct/:productID", "ProductsController.destroy").as("product.delete")
 
 }).middleware("auth");
 
