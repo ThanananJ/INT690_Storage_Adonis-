@@ -21,7 +21,7 @@
         @if(flashMessages.has('errors.username')||flashMessages.has('errors.password'))
             <div class="inline fields ">
               <div class="two wide field"></div>
-              <div class="six wide field" t>
+              <div class="six wide field" >
                 @if(flashMessages.has('errors.username'))
                   <div class="ui negative message">{{ flashMessages.get('errors.username')}}</div>
                 @endif
@@ -47,7 +47,7 @@
         @if(flashMessages.has('errors.firstName')||flashMessages.has('errors.lastName'))
             <div class="inline fields ">
               <div class="two wide field"></div>
-              <div class="six wide field" t>
+              <div class="six wide field" >
                 @if(flashMessages.has('errors.firstName'))
                   <div class="ui negative message">{{ flashMessages.get('errors.firstName')}}</div>
                 @endif
@@ -70,10 +70,10 @@
                 <input type="text" placeholder="Telephome Number" name="telNo" value="{{employee.telNo}}">
             </div>
         </div>
-        @if(flashMessages.has('errors.firstName')||flashMessages.has('errors.lastName'))
+        @if(flashMessages.has('errors.email')||flashMessages.has('errors.telNo'))
             <div class="inline fields ">
               <div class="two wide field"></div>
-              <div class="six wide field" t>
+              <div class="six wide field" >
                 @if(flashMessages.has('errors.email'))
                   <div class="ui negative message">{{ flashMessages.get('errors.email')}}</div>
                 @endif
