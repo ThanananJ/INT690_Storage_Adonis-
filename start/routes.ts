@@ -22,11 +22,18 @@ import Route from "@ioc:Adonis/Core/Route";
 
 Route.group(() => {
   Route.get("/", async ({ view }) => {
-    return view.render("register");
+    return view.render("index");
   });
+
   Route.get("/index", "StoresController.index").as("index");
+
   Route.get("/profile", "EmployeesController.show").as("profile")
   Route.post("/profile/add", "EmployeesController.edit").as("profile.add")
+
+  Route.get("/store/add", "StoresController.create").as("store.add")
+  Route.post("/store/add", "StoresController.store").as("store.store")
+
+
 }).middleware("auth");
 
 Route.on("/login").render("login").as("login");
