@@ -28,12 +28,13 @@ Route.group(() => {
   Route.get("/index", "StoresController.index").as("index");
 
   Route.get("/profile", "EmployeesController.show").as("profile")
-  Route.post("/profile/add", "EmployeesController.edit").as("profile.add")
+  Route.post("/profile/add", "EmployeesController.edit").as("profile.edit")
 
   Route.get("/store/add", "StoresController.create").as("store.add")
   Route.post("/store/add", "StoresController.store").as("store.store")
   Route.get("/store/:storeID/delete", "StoresController.destroy").as("store.delete")
-
+  Route.get("/store/:storeID", "StoresController.show").as("store.show")
+  Route.post("/store/:storeID/edit", "StoresController.edit").as("store.edit")
 
 }).middleware("auth");
 
