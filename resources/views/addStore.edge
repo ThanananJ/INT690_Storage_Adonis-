@@ -24,55 +24,49 @@
               </div>
             </div>
           @endif
-        <div class="inline fields ">
-            <div class="two wide field"></div>
+        
+          <div class="inline fields ">
+            <div class="five wide field"></div>
             <div class="six wide field">
-              <label>Ownername:</label>
-              <input type="text" placeholder="Owner Name" name="ownerName">
-            </div> 
-            <div class="six wide field">
-                <label>Ownersurname:</label>
-                <input type="text" placeholder="Owner Surname" name="ownerLastName">
-              </div>        
+              <label>StoreName:</label>
+              <input type="text" placeholder="Store Name" name="ownerName">
+            </div>    
         </div>
-        @if(flashMessages.has('errors.ownerName')||flashMessages.has('errors.ownerLastName'))
+        @if(flashMessages.has('errors.ownerName'))
             <div class="inline fields ">
-              <div class="two wide field"></div>
-              <div class="six wide field" >
-                @if(flashMessages.has('errors.ownerName'))
-                  <div class="ui negative message">{{ flashMessages.get('errors.ownerName')}}</div>
-                @endif
-              </div>
+              <div class="five wide field"></div>
               <div class="six wide field">
-                @if(flashMessages.has('errors.ownerLastName'))
-                  <div class="ui negative message">{{ flashMessages.get('errors.ownerLastName')}}</div>
-                @endif  
+                <div class="ui negative message">{{ flashMessages.get('errors.ownerName')}}</div>
+              </div>
+            </div>
+          @endif
+          <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <label>StoreName:</label>
+              <input type="text" placeholder="Store Name" name="ownerLastName">
+            </div>    
+        </div>
+        @if(flashMessages.has('errors.ownerLastName'))
+            <div class="inline fields ">
+              <div class="five wide field"></div>
+              <div class="six wide field">
+                <div class="ui negative message">{{ flashMessages.get('errors.ownerLastName')}}</div>
               </div>
             </div>
           @endif
         <div class="inline fields ">
-            <div class="two wide field"></div>
-            <div class="six wide field">
+          <div class="five wide field"></div>
+          <div class="six wide field">  
               <label>TelNo:</label>
               <input type="text" placeholder="Telephone Number" name="telNo">
-            </div> 
-            <div class="six wide field">
-                <label>ProductCount:</label>
-                <input type="number" placeholder="Product Count" name="productCount">
-              </div>        
+            </div>       
         </div>
-        @if(flashMessages.has('errors.telNo')||flashMessages.has('errors.productCount'))
+        @if(flashMessages.has('errors.telNo'))
             <div class="inline fields ">
-              <div class="two wide field"></div>
-              <div class="six wide field" >
-                @if(flashMessages.has('errors.telNo'))
-                  <div class="ui negative message">{{ flashMessages.get('errors.telNo')}}</div>
-                @endif
-              </div>
-              <div class="six wide field">
-                @if(flashMessages.has('errors.productCount'))
-                  <div class="ui negative message">{{ flashMessages.get('errors.productCount')}}</div>
-                @endif  
+              <div class="five wide field"></div>
+              <div class="six wide field">  
+                <div class="ui negative message">{{ flashMessages.get('errors.telNo')}}</div>
               </div>
             </div>
           @endif
@@ -91,7 +85,7 @@
                 <div class="ui negative message">{{ flashMessages.get('errors.address')}}</div>
               </div>
             </div>
-          @endif
+      @endif
       <a class="ui button" href="{{route('index')}}">Back</a>
         <input class="ui button" type="submit" value="Add">
     </form>
