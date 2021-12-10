@@ -1,17 +1,37 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Product from 'App/Models/Product';
+import ProductValidator from 'App/Validators/ProductValidator';
 
 export default class ProductsController {
-  public async index({}: HttpContextContract) {}
+  public async index({ }: HttpContextContract) { }
 
-  public async create({}: HttpContextContract) {}
+  public async create({ view, params }: HttpContextContract) {
+    const storeID = params.storeID
+    return view.render('addProduct', { storeID: storeID })
+  }
 
-  public async store({}: HttpContextContract) {}
+  public async store({ params, response, request }: HttpContextContract) {
+    const storeID = params.storeID
 
-  public async show({}: HttpContextContract) {}
+    const payload = await request.validate(ProductValidator);
 
-  public async edit({}: HttpContextContract) {}
+    const product = new Product()
 
-  public async update({}: HttpContextContract) {}
+    product.productName = payload.productName
+    product.quantity = payload.quantity
+    product.price = payload.price
+    product.storeStoreId = storeID
 
-  public async destroy({}: HttpContextContract) {}
+    product.save()
+    // response.redirect().toRoute('product.add', { storeID: storeID })
+    response.redirect().toRoute('store.show', { storeID: storeID })
+  }
+
+  public async show({ }: HttpContextContract) { }
+
+  public async edit({ }: HttpContextContract) { }
+
+  public async update({ }: HttpContextContract) { }
+
+  public async destroy({ }: HttpContextContract) { }
 }
