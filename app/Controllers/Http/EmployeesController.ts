@@ -1,5 +1,6 @@
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import Employee from "App/Models/Employee";
+import LoginValidator from "App/Validators/LoginValidator";
 import ProfileValidator from "App/Validators/ProfileValidator";
 import RegisterValidator from "App/Validators/RegisterValidator";
 
@@ -10,30 +11,27 @@ export default class EmployeesController {
     session,
     response,
   }: HttpContextContract) {
-    const username = request.input("username");
-    const password = request.input("password");
+
+
+    const payload = await request.validate(LoginValidator);
+    const username = payload.username;
+    const password = payload.password;
 
     console.log(username);
     console.log(password);
 
     try {
-      console.log("---");
       await auth.attempt(username, password);
-      console.log("login");
       response.redirect().toRoute("index");
     } catch (error) {
-      console.log(error);
       session.flash("error", "The user is not authorized!");
       response.redirect().toRoute("login");
     }
   }
 
   public async register({ request, response, session }: HttpContextContract) {
-    console.log("start");
 
     const payload = await request.validate(RegisterValidator);
-
-    console.log(payload);
 
     const employee = await Employee.create({
       username: payload.username,
@@ -45,7 +43,7 @@ export default class EmployeesController {
     });
 
     session.flash(
-      "message",
+      "messageRegister",
       "The user is registerd successfuly. Please use username and password to login!"
     );
 
