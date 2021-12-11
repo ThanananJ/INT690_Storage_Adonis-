@@ -13,7 +13,7 @@
         <div class="seven wide field"></div>
         <div class="four wide field">
         @if(flashMessages.has('messageStore'))
-          <div class="ui positive message">{{ flashMessages.get('message')}}</div>
+          <div class="ui positive message">{{ flashMessages.get('messageStore')}}</div>
         @endif
       </div>
       </div>
@@ -52,6 +52,22 @@
     </form>
     <hr>
     <h1 class="ui header">Lists Product</h1>
+    <div class="ui grid">
+      <div class="doubling three column row">
+        <div class="column"></div>
+        <div class="column" style="text-align:center">
+          @if(flashMessages.has('messageAddProduct'))
+            <div class="ui positive message">{{ flashMessages.get('messageAddProduct')}}</div>
+          @elseif(flashMessages.has('messageEditProduct'))
+            <div class="ui positive message">{{ flashMessages.get('messageEditProduct')}}</div>
+          @elseif(flashMessages.has('messageDeleteProduct'))
+            <div class="ui negative message">{{ flashMessages.get('messageDeleteProduct')}}</div>
+          @endif
+        </div>
+        <div class="column" style="text-align:right"></div>
+      </div>
+    </div>
+    
     <table class="ui very basic large table " style="text-align: center;">
       <thead>
         <tr>

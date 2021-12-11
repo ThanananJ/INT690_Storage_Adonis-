@@ -28,7 +28,7 @@ export default class StoresController {
     return view.render('addStore')
   }
 
-  public async store({ request, response, auth }: HttpContextContract) {
+  public async store({ request, response, auth, session }: HttpContextContract) {
 
     const payload = await request.validate(AddStoreValidator);
 
@@ -42,6 +42,12 @@ export default class StoresController {
     store.employeeEmployeeId = auth.user!.employeeId
 
     await store.save()
+
+    session.flash(
+      "messageAddStore",
+      "Create Store Success."
+    );
+
 
     response.redirect().toRoute("index")
   }
@@ -57,7 +63,7 @@ export default class StoresController {
     const products = await Product.query().where('store_store_id', storeID)
 
 
-    return view.render("storeDetail", { store: store,products:products });
+    return view.render("storeDetail", { store: store, products: products });
   }
 
   public async edit({ response, auth, request, session, params }: HttpContextContract) {
@@ -79,14 +85,14 @@ export default class StoresController {
 
     session.flash(
       "messageStore",
-      "Update Store successfuly."
+      "Update Store Success."
     );
     response.redirect().toRoute('store.show', { storeID: storeID })
   }
 
   public async update({ }: HttpContextContract) { }
 
-  public async destroy({ auth, params, response }: HttpContextContract) {
+  public async destroy({ auth, params, response, session }: HttpContextContract) {
 
     const storeID = params.storeID
 
@@ -94,6 +100,12 @@ export default class StoresController {
       auth.user!.employeeId).where('storeId', storeID).firstOrFail()
 
     await store?.delete()
+
+    session.flash(
+      "messageDeleteStore",
+      "Already Delete Store."
+    );
+
     response.redirect().toRoute("index")
   }
 }

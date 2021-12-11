@@ -10,7 +10,7 @@ export default class ProductsController {
     return view.render('addProduct', { storeID: storeID })
   }
 
-  public async store({ params, response, request }: HttpContextContract) {
+  public async store({ params, response, request, session }: HttpContextContract) {
     const storeID = params.storeID
 
     const payload = await request.validate(ProductValidator);
@@ -23,7 +23,12 @@ export default class ProductsController {
     product.storeStoreId = storeID
 
     product.save()
-    // response.redirect().toRoute('product.add', { storeID: storeID })
+
+    session.flash(
+      "messageAddProduct",
+      "Create Product Success."
+    );
+
     response.redirect().toRoute('store.show', { storeID: storeID })
   }
 
@@ -50,17 +55,28 @@ export default class ProductsController {
 
     await product?.save()
 
+    session.flash(
+      "messageEditProduct",
+      "Edit Product Success."
+    );
+
     response.redirect().toRoute('store.show', { storeID: storeID })
   }
 
 
-  public async destroy({ params, response }: HttpContextContract) {
+  public async destroy({ params, response, session }: HttpContextContract) {
     const storeID = params.storeID
     const productID = params.productID
 
     const product = await Product.query().where('store_store_id', storeID).where('product_id', productID).firstOrFail()
 
     await product?.delete()
+
+    session.flash(
+      "messageDeleteProduct",
+      "Already Delete Product."
+    );
+
     response.redirect().toRoute('store.show', { storeID: storeID })
   }
 }
