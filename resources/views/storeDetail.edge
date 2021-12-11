@@ -47,8 +47,8 @@
             <textarea name="address">{{store.address}}</textarea>
           </div>     
       </div>
-        <a class="ui button" href="{{route('index')}}">Back</a>
-        <input class="ui button" type="submit" value="Update Store">
+        <a class="ui black button" href="{{route('index')}}">Back</a>
+        <input class="ui green button" type="submit" value="Update Store">
     </form>
     <hr>
     <h1 class="ui header">Lists Product</h1>
@@ -87,10 +87,10 @@
           <td>{{product.quantity}}</td>
           <td>{{product.price}} บาท</td>
           <td>
-            <a class="ui small button" href="{{route('product.show',{storeID: store.storeId,productID:product.productId})}}">Edit Product</a>
+            <a class="ui green small button" href="{{route('product.show',{storeID: store.storeId,productID:product.productId})}}">Edit Product</a>
           </td>
           <td>
-            <a class="ui red button" href="{{route('product.delete',{storeID: store.storeId,productID:product.productId})}}">Delete Product</a>
+            <a class="ui red small button" href="{{route('product.delete',{storeID: store.storeId,productID:product.productId})}}">Delete Product</a>
           </td>
         </tr>
         @endeach
@@ -100,7 +100,7 @@
           <th></th>
           <th colspan="6">
             <a href="{{route('product.add',{storeID: store.storeId})}}">
-              <div class="ui right floated small button">
+              <div class="ui primary right floated small button">
                 New Product
               </div>
             </a>
