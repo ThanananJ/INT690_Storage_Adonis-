@@ -7,9 +7,6 @@ export default class Store extends BaseModel {
   public storeId: number
 
   @column()
-  public productCount: number
-
-  @column()
   public storeName: string
 
   @column()
