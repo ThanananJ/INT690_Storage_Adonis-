@@ -27,7 +27,7 @@ export default class ProfileValidator {
     password: schema.string({}, [rules.minLength(6)]),
     firstName: schema.string(),
     lastName: schema.string(),
-    email: schema.string({}, [rules.email()]),
+    email: schema.string(),
     telNo: schema.string({}, [rules.mobile(), rules.minLength(9), rules.maxLength(10)]),
   })
 
@@ -48,7 +48,6 @@ export default class ProfileValidator {
       "The {{ field }} must have at least {{ options.minLength }} length!",
       maxLength:
       "The {{ field }} must have {{ options.maxLength }} length!",
-    "email.email": "Email is invalid!",
     "telNo.mobile": "Telephone Number is invalid!"
   }
 }

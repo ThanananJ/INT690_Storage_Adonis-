@@ -31,7 +31,7 @@ export default class RegisterValidator {
     password: schema.string({}, [rules.minLength(6)]),
     firstName: schema.string(),
     lastName: schema.string(),
-    email: schema.string({}, [rules.email()]),
+    email: schema.string(),
     telNo: schema.string({}, [rules.mobile({ locales: ["th-TH"] }), rules.minLength(9), rules.maxLength(10)]),
   });
 
@@ -53,7 +53,6 @@ export default class RegisterValidator {
     maxLength:
       "The {{ field }} must have {{ options.maxLength }} length!",
     "username.unique": "The username is already used!",
-    "email.email": "Email is invalid!",
     "telNo.mobile": "Telephone Number is invalid!"
   };
 }
