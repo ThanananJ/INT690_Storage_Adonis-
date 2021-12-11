@@ -1,0 +1,101 @@
+@layout('layouts/master')
+
+@set('title','Home')
+
+@section('body') 
+<div style="text-align: center" class=" ">
+    <h1 class="ui header">Profile</h1>
+    <form class="ui large form" action="{{route('profile.edit')}}" method="post"  >   
+        {{ csrfField() }} 
+
+        <div class="inline fields ">
+          <div class="seven wide field"></div>
+          <div class="four wide field">
+          @if(flashMessages.has('message'))
+            <div class="ui positive message">{{ flashMessages.get('message')}}</div>
+          @endif
+        </div>
+      </div>
+        <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+                <label>Username:</label>
+                <input type="text" placeholder="UserName" name="username" value="{{employee.username}}" disabled>
+            </div>
+            <div class="six wide field">
+                <label>Password: </label>
+                <input type="password" placeholder="Password" name="password" value="{{employee.password}}">
+            </div>
+        </div>
+        @if(flashMessages.has('errors.username')||flashMessages.has('errors.password'))
+            <div class="inline fields ">
+              <div class="two wide field"></div>
+              <div class="six wide field" >
+                @if(flashMessages.has('errors.username'))
+                  <div class="ui negative message">{{ flashMessages.get('errors.username')}}</div>
+                @endif
+              </div>
+              <div class="six wide field">
+                @if(flashMessages.has('errors.password'))
+                  <div class="ui negative message">{{ flashMessages.get('errors.password')}}</div>
+                @endif  
+              </div>
+            </div>
+          @endif
+        <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+                <label>Name:</label>
+                <input type="text" placeholder="Name" name="firstName" value="{{employee.firstName}}" >
+            </div>  
+            <div class="six wide field">
+                <label>Surname: </label>
+                <input type="text" placeholder="Surname" name="lastName" value="{{employee.lastName}}">
+            </div>
+        </div>
+        @if(flashMessages.has('errors.firstName')||flashMessages.has('errors.lastName'))
+            <div class="inline fields ">
+              <div class="two wide field"></div>
+              <div class="six wide field" >
+                @if(flashMessages.has('errors.firstName'))
+                  <div class="ui negative message">{{ flashMessages.get('errors.firstName')}}</div>
+                @endif
+              </div>
+              <div class="six wide field">
+                @if(flashMessages.has('errors.lastName'))
+                  <div class="ui negative message">{{ flashMessages.get('errors.lastName')}}</div>
+                @endif  
+              </div>
+            </div>
+          @endif
+        <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+                <label>Email:</label>
+                <input type="text" placeholder="Email" name="email" value="{{employee.email}}">
+            </div>  
+            <div class="six wide field">
+                <label>TelNo: </label>
+                <input type="text" placeholder="Telephome Number" name="telNo" value="{{employee.telNo}}">
+            </div>
+        </div>
+        @if(flashMessages.has('errors.email')||flashMessages.has('errors.telNo'))
+            <div class="inline fields ">
+              <div class="two wide field"></div>
+              <div class="six wide field" >
+                @if(flashMessages.has('errors.email'))
+                  <div class="ui negative message">{{ flashMessages.get('errors.email')}}</div>
+                @endif
+              </div>
+              <div class="six wide field">
+                @if(flashMessages.has('errors.telNo'))
+                  <div class="ui negative message">{{ flashMessages.get('errors.telNo')}}</div>
+                @endif  
+              </div>
+            </div>
+          @endif
+        <a class="ui black button" href="{{route('index')}}">Back</a>
+        <input class="ui green button" type="submit" value="Update">
+    </form>
+</div>
+@endsection

@@ -1,0 +1,93 @@
+@layout('layouts/master')
+
+@set('title','Login')
+
+@section('body')
+<div style="text-align: center" class=" ">
+
+    <h1 class="ui header">Add Store</h1>
+
+    <form class="ui large form" action="{{route('store.store')}}" method="post"  > 
+      {{ csrfField() }} 
+        <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <label style="width: 120px">Store Name:</label>
+              <input type="text" placeholder="Store Name" name="storeName">
+            </div>    
+        </div>
+        @if(flashMessages.has('errors.storeName'))
+            <div class="inline fields ">
+              <div class="five wide field"></div>
+              <div class="six wide field">
+                <div class="ui negative message">{{ flashMessages.get('errors.storeName')}}</div>
+              </div>
+            </div>
+          @endif
+        
+          <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <label style="width: 120px">Owner Name:</label>
+              <input type="text" placeholder="Store Name" name="ownerName">
+            </div>    
+        </div>
+        @if(flashMessages.has('errors.ownerName'))
+            <div class="inline fields ">
+              <div class="five wide field"></div>
+              <div class="six wide field">
+                <div class="ui negative message">{{ flashMessages.get('errors.ownerName')}}</div>
+              </div>
+            </div>
+          @endif
+          <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <label style="width: 140px">Owner Surname:</label>
+              <input type="text" placeholder="Store Name" name="ownerLastName">
+            </div>    
+        </div>
+        @if(flashMessages.has('errors.ownerLastName'))
+            <div class="inline fields ">
+              <div class="five wide field"></div>
+              <div class="six wide field">
+                <div class="ui negative message">{{ flashMessages.get('errors.ownerLastName')}}</div>
+              </div>
+            </div>
+          @endif
+        <div class="inline fields ">
+          <div class="five wide field"></div>
+          <div class="six wide field">  
+              <label>TelNo:</label>
+              <input type="text" placeholder="Telephone Number" name="telNo">
+            </div>       
+        </div>
+        @if(flashMessages.has('errors.telNo'))
+            <div class="inline fields ">
+              <div class="five wide field"></div>
+              <div class="six wide field">  
+                <div class="ui negative message">{{ flashMessages.get('errors.telNo')}}</div>
+              </div>
+            </div>
+          @endif
+        <div class="inline fields ">
+          <div class="five wide field"></div>
+          <div class="six wide field">
+            <label>Address:</label>
+            <textarea placeholder="Address" name="address"></textarea>
+          </div>     
+          
+      </div>
+      @if(flashMessages.has('errors.address'))
+            <div class="inline fields ">
+              <div class="five wide field"></div>
+              <div class="six wide field">
+                <div class="ui negative message">{{ flashMessages.get('errors.address')}}</div>
+              </div>
+            </div>
+      @endif
+      <a class="ui black button" href="{{route('index')}}">Back</a>
+        <input class="ui green button" type="submit" value="Add">
+    </form>
+</div>
+@endsection

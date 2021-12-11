@@ -1,0 +1,49 @@
+@layout('layouts/master')
+
+@set('title','Home')
+
+@section('body') 
+
+    <div class="ui grid">
+      <div class="doubling three column row">
+        <div class="column">Store Count: {{employee.$extras.storesCount}}</div>
+        <div class="column" style="text-align:center">
+          @if(flashMessages.has('messageAddStore'))
+            <div class="ui positive message">{{ flashMessages.get('messageAddStore')}}</div>
+          @elseif(flashMessages.has('messageDeleteStore'))
+            <div class="ui negative message">{{ flashMessages.get('messageDeleteStore')}}</div>
+          @elseif(flashMessages.has('messageLogin'))
+            <div class="ui positive message">{{ flashMessages.get('messageLogin')}}</div>
+          @endif
+        </div>
+        <div class="column" style="text-align:right"><a class="ui primary button" href="{{route('store.add')}}">New Store</a></div>
+      </div>
+    </div>
+
+    <div class="ui cards">
+      @each(store in stores)
+        <div class="card">
+          <div class="content">
+            <div class="header">
+              {{store.storeName}}
+            </div>
+            <div class="meta">
+              Product Count: {{store.$extras.productsCount}}
+            </div>
+            <div class="description">
+              Owner: {{store.ownerName}} {{store.ownerLastName}}
+            </div>
+          </div>
+          <div class="extra content">
+            <div class="ui two buttons">
+              <a class="ui basic green button" href="{{route('store.show',{storeID: store.storeId})}}">Edit Store</a>
+              <a class="ui basic red button" href="{{route('store.delete',{storeID: store.storeId})}}">Delete Store</a>
+            </div>
+          </div>
+        </div>
+        @endeach
+      </div>
+  
+    
+    </ul>
+@endsection
