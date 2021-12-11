@@ -7,29 +7,55 @@
 
     <h1 class="ui header">Product</h1>
 
-    <form class="ui large form" action="" method="post"  > 
-        <div class="inline fields ">
-            <div class="five wide field"></div>
-            <div class="six wide field">
-              <label>ProductName:</label>
-              <input type="text" placeholder="UserName">
-            </div>    
-        </div>
-        <div class="inline fields ">
-            <div class="five wide field"></div>
-            <div class="six wide field">
-              <label>Quantity:</label>
-              <input type="text" placeholder="UserName">
-            </div>     
-        </div>
-        <div class="inline fields ">
+    <form class="ui large form" action="{{route('product.edit',{storeID: storeID,productID:product.productId})}}" method="post"  > 
+      {{ csrfField() }} 
+      <div class="inline fields ">
           <div class="five wide field"></div>
           <div class="six wide field">
-            <label>Price:</label>
-            <input type="text" placeholder="UserName">
+            <label>ProductName:</label>
+            <input type="text" placeholder="Product Name" name="productName" value="{{product.productName}}">
+          </div>    
+      </div>
+      @if(flashMessages.has('errors.productName'))
+          <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <div class="ui negative message">{{ flashMessages.get('errors.productName')}}</div>
+            </div>
+          </div>
+        @endif
+      <div class="inline fields ">
+          <div class="five wide field"></div>
+          <div class="six wide  field">
+            <label>Quantity:</label>
+            <input type="number" placeholder="Quantity" name="quantity" value="{{product.quantity}}">
           </div>     
       </div>
-        <input class="ui button" type="button" value="Back">
+      @if(flashMessages.has('errors.quantity'))
+          <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <div class="ui negative message">{{ flashMessages.get('errors.quantity')}}</div>
+            </div>
+          </div>
+        @endif
+      <div class="inline fields ">
+        <div class="five wide field"></div>
+        <div class="six wide field">
+          <label style="width: 120px">Price per unit:</label>
+          <input type="text" placeholder="Price" name="price" value="{{product.price}}">
+          &nbsp;<div class="ui basic ">บาท</div>
+        </div>     
+      </div>
+      @if(flashMessages.has('errors.price'))
+          <div class="inline fields ">
+            <div class="five wide field"></div>
+            <div class="six wide field">
+              <div class="ui negative message">{{ flashMessages.get('errors.price')}}</div>
+            </div>
+          </div>
+        @endif
+      <a class="ui button" href="{{route('store.show',{storeID: storeID})}}">Back</a>
         <input class="ui button" type="submit" value="Update">
     </form>
 </div>

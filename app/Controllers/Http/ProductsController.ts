@@ -27,11 +27,32 @@ export default class ProductsController {
     response.redirect().toRoute('store.show', { storeID: storeID })
   }
 
-  public async show({ }: HttpContextContract) { }
+  public async show({ params, view }: HttpContextContract) {
+    const storeID = params.storeID
+    const productID = params.productID
 
-  public async edit({ }: HttpContextContract) { }
+    const product = await Product.query().where('store_store_id', storeID).where('product_id', productID).firstOrFail()
 
-  public async update({ }: HttpContextContract) { }
+    return view.render('editProduct', { storeID: storeID, product: product })
+  }
+
+  public async edit({ params, request, response, session }: HttpContextContract) {
+    const storeID = params.storeID
+    const productID = params.productID
+
+    const product = await Product.query().where('store_store_id', storeID).where('product_id', productID).firstOrFail()
+
+    const payload = await request.validate(ProductValidator);
+
+    product!.productName = payload.productName
+    product!.quantity = payload.quantity
+    product!.price = payload.price
+
+    await product?.save()
+
+    response.redirect().toRoute('store.show', { storeID: storeID })
+  }
+
 
   public async destroy({ params, response }: HttpContextContract) {
     const storeID = params.storeID

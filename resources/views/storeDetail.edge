@@ -70,7 +70,9 @@
           <td>{{product.productName}}</td>
           <td>{{product.quantity}}</td>
           <td>{{product.price}} บาท</td>
-          <td><a class="ui small button">Edit Product</a></td>
+          <td>
+            <a class="ui small button" href="{{route('product.show',{storeID: store.storeId,productID:product.productId})}}">Edit Product</a>
+          </td>
           <td>
             <a class="ui red button" href="{{route('product.delete',{storeID: store.storeId,productID:product.productId})}}">Delete Product</a>
           </td>
