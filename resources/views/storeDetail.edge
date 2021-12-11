@@ -27,6 +27,14 @@
                 <label style="text-align: left">ProductCount: {{store.$extras.productsCount}}</label>
              </div>  
         </div>
+        @if(flashMessages.has('errors.storeName'))
+          <div class="inline fields ">
+            <div class="two wide field"></div>
+            <div class="six wide field">
+              <div class="ui negative message">{{ flashMessages.get('errors.storeName')}}</div>
+            </div>  
+          </div>
+        @endif
         <div class="inline fields ">
             <div class="two wide field"></div>
             <div class="six wide field">
@@ -36,10 +44,33 @@
               <input type="text" name="ownerLastName" value="{{store.ownerLastName}}">
             </div> 
             <div class="six wide field">
+              <label style="width: 200px">Telephone Number:</label>
+              &nbsp;
                 <input type="text" name="telNo" value="{{store.telNo}}">
             </div>        
         </div>
-       
+        @if(flashMessages.has('errors.ownerName')||flashMessages.has('errors.ownerLastName')||flashMessages.has('errors.telNo'))
+        <div class="inline fields ">
+          <div class="two wide field"></div>
+          <div class="six wide field">
+            <label style="width: 50px"> </label>
+            @if(flashMessages.has('errors.ownerName'))
+              <div class="ui negative message">{{ flashMessages.get('errors.ownerName')}}</div>
+            @endif
+            &nbsp;
+            @if(flashMessages.has('errors.ownerLastName'))
+              <div class="ui negative message" style="margin-bottom: 16px">{{ flashMessages.get('errors.ownerLastName')}}</div>
+            @endif
+          </div> 
+          <div class="six wide field">
+            <label style="width: 150px"></label>
+            &nbsp;
+            @if(flashMessages.has('errors.telNo'))
+              <div class="ui negative message">{{ flashMessages.get('errors.telNo')}}</div>
+            @endif
+          </div>        
+        </div> 
+        @endif
         <div class="inline fields ">
           <div class="five wide field"></div>
           <div class="six wide field">
@@ -47,6 +78,15 @@
             <textarea name="address">{{store.address}}</textarea>
           </div>     
       </div>
+      @if(flashMessages.has('errors.address'))
+      <div class="inline fields ">
+        <div class="five wide field"></div>
+        <div class="six wide field">
+          <div class="ui negative message">{{ flashMessages.get('errors.address')}}</div>
+        </div>     
+      </div>
+              
+        @endif
         <a class="ui black button" href="{{route('index')}}">Back</a>
         <input class="ui green button" type="submit" value="Update Store">
     </form>

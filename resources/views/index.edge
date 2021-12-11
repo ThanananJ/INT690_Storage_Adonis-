@@ -12,6 +12,8 @@
             <div class="ui positive message">{{ flashMessages.get('messageAddStore')}}</div>
           @elseif(flashMessages.has('messageDeleteStore'))
             <div class="ui negative message">{{ flashMessages.get('messageDeleteStore')}}</div>
+          @elseif(flashMessages.has('messageLogin'))
+            <div class="ui positive message">{{ flashMessages.get('messageLogin')}}</div>
           @endif
         </div>
         <div class="column" style="text-align:right"><a class="ui primary button" href="{{route('store.add')}}">New Store</a></div>

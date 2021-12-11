@@ -22,6 +22,7 @@ export default class EmployeesController {
 
     try {
       await auth.attempt(username, password);
+      session.flash("messageLogin", "Login Success.");
       response.redirect().toRoute("index");
     } catch (error) {
       session.flash("error", "The user is not authorized!");
@@ -50,8 +51,12 @@ export default class EmployeesController {
     response.redirect().toRoute("login");
   }
 
-  public async logout({ auth, response }: HttpContextContract) {
+  public async logout({ auth, response, session }: HttpContextContract) {
     await auth.use("web").logout();
+    session.flash(
+      "messageLogout",
+      "Logout Success."
+    );
     response.redirect().toRoute("login");
   }
 

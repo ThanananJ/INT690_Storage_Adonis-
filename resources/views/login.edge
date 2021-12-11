@@ -14,6 +14,8 @@
             <div class="ui negative message">{{ flashMessages.get('error')}}</div>
           @elseif(flashMessages.has('messageRegister'))
             <div class="ui positive message">{{ flashMessages.get('messageRegister')}}</div>
+          @elseif(flashMessages.has('messageLogout'))
+            <div class="ui positive message">{{ flashMessages.get('messageLogout')}}</div>
           @endif
         </div>
         <div class="column" style="text-align:right"></div>
