@@ -17,37 +17,8 @@
 | import './routes/customer''
 |
 */
+import './routes/product'
+import './routes/store'
+import './routes/employee'
 
-import Route from "@ioc:Adonis/Core/Route";
 
-Route.group(() => {
-  Route.get("/", async ({ view }) => {
-    return view.render("index");
-  });
-
-  Route.get("/index", "StoresController.index").as("index");
-
-  Route.get("/profile", "EmployeesController.show").as("profile")
-  Route.post("/profile/add", "EmployeesController.edit").as("profile.edit")
-
-  Route.get("/store/add", "StoresController.create").as("store.add")
-  Route.post("/store/add", "StoresController.store").as("store.store")
-  Route.get("/store/:storeID/delete", "StoresController.destroy").as("store.delete")
-  Route.get("/store/:storeID", "StoresController.show").as("store.show")
-  Route.post("/store/:storeID/edit", "StoresController.edit").as("store.edit")
-
-  Route.get("/store/:storeID/addproduct", "ProductsController.create").as("product.add")
-  Route.post("/store/:storeID/addproduct", "ProductsController.store").as("product.store")
-  Route.get("/store/:storeID/deleteproduct/:productID", "ProductsController.destroy").as("product.delete")
-  Route.get("/store/:storeID/product/:productID", "ProductsController.show").as("product.show")
-  Route.post("/store/:storeID/product/:productID", "ProductsController.edit").as("product.edit")
-
-}).middleware("auth");
-
-Route.on("/login").render("login").as("login");
-Route.on("/register").render("register").as("register");
-Route.post("/users/login", "EmployeesController.login").as("employee.login");
-Route.post("/users/register", "EmployeesController.register").as(
-  "employee.register"
-);
-Route.get("/logout", "EmployeesController.logout").as("employee.logout");
